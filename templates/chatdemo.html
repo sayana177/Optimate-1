@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <style>
+        .message-container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .message {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .message-content {
+            max-width: 70%;
+            border-radius: 10px;
+            padding: 10px;
+            background-color: #DCF8C6;
+        }
+        .received .message-content {
+            background-color: #E5E5EA;
+            float: left;
+        }
+        .received .message-content {
+            background-color: #E5E5EA;
+            float: left;
+        }
+        .message-timestamp {
+            font-size: 12px;
+            color: #888;
+            margin-left: 5px;
+        }
+        .read-indicator {
+            font-size: 12px;
+            color: green;
+            margin-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="message-container">
+        {% for message in messages %}
+            <div class="message {% if message['sender'] != 'user' %}received{% endif %}">
+                <div class="message-content">
+                    <p>{{ message['content'] }}</p>
+                    <span class="message-timestamp">{{ message['date_time'] }}</span>
+                </div>
+                {% if message['sender'] == 'user' %}
+                    {% if message['read_status'] == 1 %}
+                        <span class="read-indicator">&#10003;</span>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

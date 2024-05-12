@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>EYE CARE</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/bootstrap.min.css')}}">
+    <!-- style css -->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="{{url_for('static',filename='css/responsive.css')}}">
+    <!-- fevicon -->
+    <link rel="icon" href="{{url_for('static',filename='images/fevicon.png')}}" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/jquery.mCustomScrollbar.min.css')}}">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- owl stylesheets --> 
+    <link rel="stylesheet" href="{{url_for('static',filename='css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+  {% if msg %}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var msg = "{{ msg }}"; // Extract the message from Flask variable
+
+    // Check if message is not empty
+    if (msg.trim() !== '') {
+        // Display alert with the message
+        alert(msg);
+    }
+});
+  </script>
+  {%endif%}
+    <style>
+      .error {
+  color: red;
+}
+  </style>
+  
+  </head>
+  <body>
+    <!-- header section start -->
+    <div class="header_section">
+      <nav class="destop_header navbar navbar-expand-lg navbar-light bg-light" style="height: 100px;">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin-top: -20px; padding-left: 250px;">
+          <ul class="navbar-nav mr-auto" >
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('index')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('about')}}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('doctors')}}">Doctor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('departments')}}">Depatments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('contact')}}">Contact</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('Register')}}">Register</a>
+            </li>   
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('login')}}">LOGIN</a>
+            </li>           
+          </ul>
+        </div>
+      </nav>
+      <nav class="mobile_header navbar navbar-expand-lg navbar-light bg-light" >
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent2" aria-controls="navbarSupportedContent2" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent2">
+          <ul class="navbar-nav mr-auto" >
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('index')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('about')}}">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('doctors')}}">Doctor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('departments')}}">Depatments</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('contact')}}">Contact</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('Register')}}">Register</a>
+            </li>   
+            <li class="nav-item active">
+              <a class="nav-link" href="{{ url_for('login')}}">LOGIN</a>
+            </li>           
+          </ul>
+        </div>
+      </nav>
+    </div>
+      <!-- header section end -->
+      <!-- contact section start -->
+      <div class="contact_section layout_padding" style="background-color:#fff;">
+       
+        <div class="col-lg-6 col-md-12" style="left: 100px;">
+          <div class="row">
+            <div class="col-lg-6 col-md-12">
+        <div style="max-width: 500px; padding: 20px; background-color: #fff; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+          <h2 style="text-align: center; margin-bottom: 30px; color: #333;">Login</h2>
+          <form action="{{url_for('Authentication')}}" method="post" id="loginForm" style="text-align: left;">
+              <label for="username" style="display: block; margin-bottom: 8px; color: #333;">Username:</label>
+              <input type="text" id="username" name="username" placeholder="Enter your username" style="width: 100%; padding: 12px 20px; margin-bottom: 8px; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+      
+              <label for="password" style="display: block; margin-bottom: 8px; color: #333;">Password:</label>
+              <input type="password" id="password" name="password" placeholder="Enter your password" style="width: 100%; padding: 12px 20px; margin-bottom: 8px; display: inline-block; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;">
+      
+              <button type="submit" id="loginBtn" style="background-color: #007bff; color: white; padding: 14px 20px; margin-bottom: 8px; border: none; border-radius: 4px; cursor: pointer; width: 100%;">Login</button>
+          </form>
+          <a href="#" style="color: #007bff; text-decoration: none; float: right; font-size: 14px;">Forgot password?</a>
+          </div>
+          </div>
+        
+        <div class="col-lg-6 col-md-12" style="left: 100px;">
+          <div class="image_3" href="#"><img width="400px" src="{{url_for('static',filename='images/img-4.png')}}"></div>
+          </div>
+        </div>
+      </div>
+      </div>
+      <!-- contact section end -->
+      <!-- copyright section start -->
+      <div class="copyright_section">
+        <div class="container">
+          <p class="copyright">&#169; Opti-mate 2024</p>
+        </div>
+      </div>
+
+      <!-- copyright section end -->
+
+      <script>
+          document.getElementById("loginBtn").addEventListener("click", function(event) {
+        event.preventDefault(); // Prevent form submission
+        var username = document.getElementById("username").value;
+        var password = document.getElementById("password").value;
+
+        if (username.trim() === '' || password.trim() === '') {
+            alert("Please enter both username and password.");
+        } else {
+            // Form is valid, you can perform additional checks if needed
+            // Here, you might want to submit the form using AJAX
+            // For demonstration purposes, I'm just logging the form data
+            console.log("Username: " + username);
+            console.log("Password: " + password);
+            // Now you can perform any further actions, like submitting the form via AJAX
+            document.getElementById("loginForm").submit();
+        }
+    });
+        </script>
+        
+      <!-- Javascript files-->
+      <script src="{{url_for('static',filename='js/jquery.min.js')}}"></script>
+      <script src="{{url_for('static',filename='js/popper.min.js')}}"></script>
+      <script src="{{url_for('static',filename='js/bootstrap.bundle.min.js')}}"></script>
+      <script src="{{url_for('static',filename='js/jquery-3.0.0.min.js')}}"></script>
+      <script src="{{url_for('static',filename='js/plugin.js')}}"></script>
+      <!-- sidebar -->
+      <script src="{{url_for('static',filename='js/jquery.mCustomScrollbar.concat.min.js')}}"></script>
+      <script src="{{url_for('static',filename='js/custom.js')}}"></script>
+      <!-- javascript --> 
+      <script src="{{url_for('static',filename='js/owl.carousel.js')}}"></script>
+      <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+     </body>
+   </html>
